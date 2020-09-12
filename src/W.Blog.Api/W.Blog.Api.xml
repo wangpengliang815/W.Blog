@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>W.Blog.Api</name>
+    </assembly>
+    <members>
+        <member name="T:W.Blog.Api.Controllers.CategoryController">
+            <summary>
+            类别相关
+            </summary>
+        </member>
+    </members>
+</doc>
