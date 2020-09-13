@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Storage;
-    using W.Blog.Dal.Configurations;
     using W.Blog.Entity.Entitys;
 
     public class ApplicationDbContext : DbContext
@@ -22,8 +21,6 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyConfiguration(new CategoryEntityConfiguration());
         }
 
         public async Task BeginTransactionAsync()
