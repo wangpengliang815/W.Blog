@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W.Blog.Api", "src\W.Blog.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCore.Common", "src\DotnetCore.Common\DotnetCore.Common.csproj", "{6142C831-FBA2-41B8-994F-41CF4B275F53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W.Blog.UnitTests", "test\W.Blog.UnitTests\W.Blog.UnitTests.csproj", "{F73885D6-72ED-40C8-9391-D885A87ADE2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W.Blog.UnitTests", "test\W.Blog.UnitTests\W.Blog.UnitTests.csproj", "{F73885D6-72ED-40C8-9391-D885A87ADE2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicsIntegrationTests", "test\BasicsIntegrationTests\BasicsIntegrationTests.csproj", "{BB23F0A8-01E4-4CB2-A5E7-50B1FBEC06F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicsIntegrationTests", "test\BasicsIntegrationTests\BasicsIntegrationTests.csproj", "{BB23F0A8-01E4-4CB2-A5E7-50B1FBEC06F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W.Blog.Api.Tests", "test\W.Blog.Api.Tests\W.Blog.Api.Tests.csproj", "{C91D8C4A-B56A-420E-BCA1-70B8C07710EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{BB23F0A8-01E4-4CB2-A5E7-50B1FBEC06F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB23F0A8-01E4-4CB2-A5E7-50B1FBEC06F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB23F0A8-01E4-4CB2-A5E7-50B1FBEC06F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91D8C4A-B56A-420E-BCA1-70B8C07710EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91D8C4A-B56A-420E-BCA1-70B8C07710EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91D8C4A-B56A-420E-BCA1-70B8C07710EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91D8C4A-B56A-420E-BCA1-70B8C07710EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{6142C831-FBA2-41B8-994F-41CF4B275F53} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 		{F73885D6-72ED-40C8-9391-D885A87ADE2A} = {F10AA149-2626-486E-85BB-9CD5365F3016}
 		{BB23F0A8-01E4-4CB2-A5E7-50B1FBEC06F2} = {F10AA149-2626-486E-85BB-9CD5365F3016}
+		{C91D8C4A-B56A-420E-BCA1-70B8C07710EE} = {F10AA149-2626-486E-85BB-9CD5365F3016}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F21BBCC-E18F-42C0-BF3B-ED008DCB3B47}

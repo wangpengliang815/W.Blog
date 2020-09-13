@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" />
@@ -32,21 +32,24 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
     <PackageReference Include="Moq" Version="4.14.5" />
-    <PackageReference Include="BuiltinService" Version="1.8.0-pre" />
     <PackageReference Include="AutoMapper" Version="10.0.0" />
-    <PackageReference Include="DomainCore.WebAPI" Version="1.2.1.5-pre" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="ncrontab" Version="3.3.0" />
-    <PackageReference Include="EFCore.BulkExtensions" Version="2.1.1" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.1.1" />
+    <PackageReference Include="ncrontab" Version="3.3.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DotnetCore.Common\DotnetCore.Common.csproj" />
-    <ProjectReference Include="..\..\src\W.Blog.BLL\W.Blog.BLL.csproj" />
-    <ProjectReference Include="..\..\src\W.Blog.Dal\W.Blog.DAL.csproj" />
+    <ProjectReference Include="..\..\src\W.Blog.Api\W.Blog.Api.csproj" />
   </ItemGroup>
 
 </Project>
