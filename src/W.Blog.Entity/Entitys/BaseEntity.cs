@@ -7,8 +7,8 @@
     {
         public int Id { get; set; }
 
-        public DeleteEnum IsDelete { get; set; }
+        public DeleteEnum IsDelete { get; set; } = DeleteEnum.Normal;
 
-        public DateTime CreateTime { get; set; }
+        public DateTime CreateTime { get; set; } = DateTime.Now;
     }
 }

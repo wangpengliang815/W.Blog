@@ -14,13 +14,15 @@
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class CategoryController : BaseApiController
+    public class ArticleController : BaseApiController
     {
-        public CategoryController(
+        public ArticleController(
             ICategoryBLL categoryBLL,
+            IArticleBLL articleBLL,
             IMapper mapper)
         {
             CategoryBLL = categoryBLL;
+            ArticleBLL = articleBLL;
             Mapper = mapper;
         }
 
@@ -31,10 +33,10 @@
         [HttpGet]
         public async Task<ApiResult> Get()
         {
-            var apiResult = new ApiResult()
+            ApiResult apiResult = new ApiResult()
             {
                 Success = true,
-                Data = await CategoryBLL.GetListAsync()
+                Data = await ArticleBLL.GetListAsync()
             };
             return apiResult;
         }
@@ -44,10 +46,10 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "CategoryGet")]
+        [HttpGet("{id}", Name = "ArticleGet")]
         public async Task<ApiResult> Get(int id)
         {
-            var entity = await CategoryBLL.FindAsync(id);
+            ArticleEntity entity = await ArticleBLL.FindAsync(id);
             if (entity != null)
             {
                 return new ApiResult
@@ -71,7 +73,7 @@
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ApiResult> Post([FromBody] CategoryVM model)
+        public async Task<ApiResult> Post([FromBody] ArticleVM model)
         {
             if (!ModelState.IsValid)
                 return new ApiResult
@@ -80,12 +82,23 @@
                 };
             else
             {
-                var entity = Mapper.Map<CategoryVM, CategoryEntity>(model);
-                return new ApiResult
+                CategoryEntity category = await CategoryBLL.FindAsync(model.CategoryId);
+                if (category != null)
                 {
-                    Success = true,
-                    Data = await CategoryBLL.InsertAsync(entity)
-                };
+                    ArticleEntity entity = Mapper.Map<ArticleVM, ArticleEntity>(model);
+                    return new ApiResult
+                    {
+                        Success = true,
+                        Data = await ArticleBLL.InsertAsync(entity)
+                    };
+                }
+                else
+                {
+                    return new ApiResult
+                    {
+                        Message = "类别信息不存在"
+                    };
+                }
             }
         }
 
@@ -95,33 +108,30 @@
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<ApiResult> Put([FromBody] CategoryVM model)
+        public async Task<ApiResult> Put([FromBody] ArticleVM model)
         {
+            ApiResult apiResult = new ApiResult();
             if (!ModelState.IsValid)
-                return new ApiResult
-                {
-                    Message = JsonConvert.SerializeObject(BadRequest(ModelState))
-                };
+                apiResult.Message = JsonConvert.SerializeObject(BadRequest(ModelState));
             else
             {
-                var entity = await CategoryBLL.GetByIdAsync(model.Id);
-                if (entity != null)
+                CategoryEntity category = await CategoryBLL.FindAsync(model.CategoryId);
+                if (category != null)
                 {
-                    entity = Mapper.Map<CategoryEntity>(model);
-                    return new ApiResult
+                    ArticleEntity entity = await ArticleBLL.GetByIdAsync(model.Id);
+                    if (entity != null)
                     {
-                        Success = true,
-                        Data = await CategoryBLL.UpdateAsync(entity)
-                    };
+                        entity = Mapper.Map<ArticleEntity>(model);
+                        apiResult.Success = true;
+                        apiResult.Data = await ArticleBLL.UpdateAsync(entity);
+                    }
                 }
                 else
                 {
-                    return new ApiResult
-                    {
-                        Message = "信息不存在"
-                    };
+                    apiResult.Message = "类别信息不存在";
                 }
             }
+            return apiResult;
         }
 
         /// <summary>
@@ -132,14 +142,14 @@
         [HttpDelete("{id}")]
         public async Task<ApiResult> Delete(int id)
         {
-            var entity = await CategoryBLL.FindAsync(id);
+            ArticleEntity entity = await ArticleBLL.FindAsync(id);
             if (entity != null)
             {
                 entity.IsDelete = DeleteEnum.Delete;
                 return new ApiResult
                 {
                     Success = true,
-                    Data = await CategoryBLL.UpdateAsync(entity)
+                    Data = await ArticleBLL.UpdateAsync(entity)
                 };
             }
             else

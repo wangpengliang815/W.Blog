@@ -3,6 +3,7 @@ namespace W.Blog.Api
     using System;
     using System.IO;
     using Autofac.Extensions.DependencyInjection;
+    using AutoMapper;
     using DotnetCore.Common.Helper;
     using DotnetCore.Common.Options;
     using Microsoft.AspNetCore.Builder;
@@ -65,6 +66,9 @@ namespace W.Blog.Api
                 });
             });
 
+
+            //services.AddAutoMapper(typeof(Startup));
+
             if (Configuration.GetSection("DbOptions:ConnectionString") != null)
             {
                 string dbConnectionString = Configuration
@@ -78,6 +82,7 @@ namespace W.Blog.Api
                 else
                     throw new Exception("未配置数据库连接");
             }
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

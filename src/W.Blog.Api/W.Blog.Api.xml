@@ -4,10 +4,83 @@
         <name>W.Blog.Api</name>
     </assembly>
     <members>
+        <member name="T:W.Blog.Api.Controllers.ArticleController">
+            <summary>
+            类别相关
+            </summary>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.ArticleController.Get">
+            <summary>
+            查询集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.ArticleController.Get(System.Int32)">
+            <summary>
+            根据Id查询
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.ArticleController.Post(W.Blog.Api.Models.ArticleVM)">
+            <summary>
+            新增
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.ArticleController.Put(W.Blog.Api.Models.ArticleVM)">
+            <summary>
+            更新
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.ArticleController.Delete(System.Int32)">
+            <summary>
+            逻辑删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:W.Blog.Api.Controllers.CategoryController">
             <summary>
             类别相关
             </summary>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.CategoryController.Get">
+            <summary>
+            查询集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.CategoryController.Get(System.Int32)">
+            <summary>
+            根据Id查询
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.CategoryController.Post(W.Blog.Api.Models.CategoryVM)">
+            <summary>
+            新增
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.CategoryController.Put(W.Blog.Api.Models.CategoryVM)">
+            <summary>
+            更新
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Controllers.CategoryController.Delete(System.Int32)">
+            <summary>
+            逻辑删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:W.Blog.Api.Startup.AddConfigure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

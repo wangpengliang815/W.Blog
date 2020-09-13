@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using W.Blog.BLL.Implement;
-
-namespace W.Blog.Api.Controllers
+﻿namespace W.Blog.Api.Controllers
 {
+    using AutoMapper;
+    using Microsoft.AspNetCore.Mvc;
+    using W.Blog.BLL.Implement;
+
     public class BaseApiController : ControllerBase
     {
-        protected ICategoryBLL _categoryBLL { get; set; }
+        protected IMapper Mapper { get; set; }
+
+        protected ICategoryBLL CategoryBLL { get; set; }
+
+        protected IArticleBLL ArticleBLL { get; set; }
     }
 
     public class ApiResult

@@ -13,6 +13,8 @@
     {
         Task<TEntity> FindAsync(int id);
 
+        Task<TEntity> GetByIdAsync(int id);
+
         Task<TEntity> InsertAsync(TEntity entity);
 
         Task<TEntity> UpdateAsync(TEntity entity);
@@ -46,6 +48,13 @@
             if (id <= 0)
                 throw new ArgumentException(nameof(id));
             return await Dal.FindAsync(id);
+        }
+
+        public virtual async Task<TEntity> GetByIdAsync(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException(nameof(id));
+            return await Dal.GetByIdAsync(id);
         }
 
         public virtual async Task<List<TEntity>> GetListAsync()
