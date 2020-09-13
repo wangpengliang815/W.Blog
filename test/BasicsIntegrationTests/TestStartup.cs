@@ -1,23 +1,19 @@
-namespace W.Blog.Api
+Ôªønamespace BasicsIntegrationTests
 {
     using System;
-    using System.IO;
     using Autofac.Extensions.DependencyInjection;
     using DotnetCore.Common.Helper;
     using DotnetCore.Common.Options;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.OpenApi.Models;
     using W.Blog.Dal.DbContexts;
 
-    public class Startup
+    public class TestStartup
     {
-        public Startup(IConfiguration configuration)
+        public TestStartup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -25,7 +21,7 @@ namespace W.Blog.Api
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// ≈‰÷√ÃÌº”
+        /// ÈÖçÁΩÆÊ∑ªÂä†
         /// </summary>
         /// <param name="services"></param>
         private void AddConfigure(IServiceCollection services)
@@ -34,36 +30,12 @@ namespace W.Blog.Api
         }
 
         /// <summary>
-        /// ∑˛ŒÒÃÌº”
+        /// ÊúçÂä°Ê∑ªÂä†
         /// </summary>
         /// <param name="services"></param>
         private void AddService(IServiceCollection services)
         {
             IDataProtector protector = AddDataProtection(services);
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "W.Blog.Api",
-                    Version = "v1",
-                    Contact = new OpenApiContact { Name = "", Email = "" },
-                });
-                var path = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location),
-                    "W.Blog.Api.xml");
-                c.IncludeXmlComments(path, true);
-            });
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("corsOptions", policy =>
-                {
-                    policy
-                    .WithOrigins("*")
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-                });
-            });
 
             if (Configuration.GetSection("DbOptions:ConnectionString") != null)
             {
@@ -76,30 +48,28 @@ namespace W.Blog.Api
                     unprotectDbConnectionString));
                 }
                 else
-                    throw new Exception("Œ¥≈‰÷√ ˝æ›ø‚¡¨Ω”");
+                    throw new Exception("Êú™ÈÖçÁΩÆÊï∞ÊçÆÂ∫ìËøûÊé•");
             }
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         /// <summary>
-        ///  ˝æ›±£ª§
+        /// Êï∞ÊçÆ‰øùÊä§
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
         private IDataProtector AddDataProtection(IServiceCollection services)
         {
-            // ∆Ù”√ ˝æ›±£ª§∆˜
+            // ÂêØÁî®Êï∞ÊçÆ‰øùÊä§Âô®
             services.AddDataProtection();
             ServiceProvider serviceProvider = services.BuildServiceProvider();
             IDataProtectionProvider protectionProvider =
                 serviceProvider.GetService<IDataProtectionProvider>();
-            IDataProtector protector = protectionProvider.CreateProtector(@"key_protector");
+            IDataProtector protector = protectionProvider.CreateProtector(@"test_key_protector");
             return protector;
         }
 
         /// <summary>
-        /// AutofacÃÊªªDI
+        /// AutofacÊõøÊç¢DI
         /// </summary>
         /// <param name="services"></param>
         private void UseIoc(IServiceCollection services)
@@ -121,24 +91,9 @@ namespace W.Blog.Api
             return new AutofacServiceProvider(AutofacHelper.Container);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "version 1.0");
-                c.RoutePrefix = "";
-            });
 
-            app.UseSwagger();
-
-            app.UseCors("corsOptions");
-
-            app.UseMvc();
         }
     }
 }

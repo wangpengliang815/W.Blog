@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DotnetCore.Common\DotnetCore.Common.csproj" />
+    <ProjectReference Include="..\..\src\W.Blog.BLL\W.Blog.BLL.csproj" />
     <ProjectReference Include="..\..\src\W.Blog.Dal\W.Blog.DAL.csproj" />
   </ItemGroup>
 

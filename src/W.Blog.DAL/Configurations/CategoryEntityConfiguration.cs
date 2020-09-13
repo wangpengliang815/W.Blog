@@ -13,16 +13,13 @@
 
             builder.Property(p => p.Name)
                 .HasMaxLength(200)
-                .HasComment("类别名称")                
                 .IsRequired();
 
             builder.Property(p => p.ParentId)
                 .HasMaxLength(100)
-                .HasComment("类别父级Id")
                 .IsRequired();
 
             builder.Property(p => p.Order)
-                .HasComment("排序字段")
                 .IsRequired();
         }
     }

@@ -9,8 +9,8 @@
 
     }
 
-    class CategoryBLL: BaseBLL<CategoryEntity, ICategoryDAL, ApplicationDbContext>,
-        ICategoryBLL
+    public class CategoryBLL : BaseBLL<CategoryEntity, ICategoryDAL, ApplicationDbContext>,
+         ICategoryBLL
     {
         public CategoryBLL(ICategoryDAL dal) : base(dal) { }
     }

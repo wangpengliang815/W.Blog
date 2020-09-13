@@ -9,5 +9,30 @@
             类别相关
             </summary>
         </member>
+        <member name="M:W.Blog.Api.Startup.AddConfigure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置添加
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:W.Blog.Api.Startup.AddService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            服务添加
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:W.Blog.Api.Startup.AddDataProtection(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            数据保护
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:W.Blog.Api.Startup.UseIoc(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Autofac替换DI
+            </summary>
+            <param name="services"></param>
+        </member>
     </members>
 </doc>
